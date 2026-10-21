@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#160e14">
-  <meta name="description" content="Un pequeño mensaje para mi princesa más fuerte. Hecho con amor, solo para ti.">
+  <meta name="theme-color" content="#180b10">
 
-  <title>Para mi princesa más fuerte ❤️</title>
+  <title>Para mi princesa ❤️</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --background: #160e14;
-      --surface: #21151e;
-      --text: #f9f0f4;
-      --muted: #c7b1be;
-      --accent: #e7a8c2;
-      --gold: #e8c58d;
-      --border: rgba(231, 168, 194, 0.18);
+      --background: #180b10;
+      --card: #241018;
+      --card-light: #2e1721;
+      --rose: #e6a0b2;
+      --rose-light: #f4c8d3;
+      --text: #f8edf0;
+      --muted: #c6aab3;
+      --gold: #d9b58a;
     }
 
     * {
@@ -34,232 +34,201 @@
 
     body {
       margin: 0;
-      min-height: 100vh;
       background:
-        radial-gradient(ellipse at 50% 5%, #432136 0%, transparent 45%),
-        radial-gradient(ellipse at 0% 60%, #271324 0%, transparent 40%),
+        radial-gradient(ellipse at top, #44202f 0%, transparent 48%),
         var(--background);
       color: var(--text);
       font-family: "DM Sans", sans-serif;
       line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "♡";
+      position: fixed;
+      top: 8%;
+      left: 5%;
+      color: rgba(230, 160, 178, 0.08);
+      font-size: 150px;
+      pointer-events: none;
+      transform: rotate(-18deg);
+    }
+
+    body::after {
+      content: "♡";
+      position: fixed;
+      right: 4%;
+      bottom: 4%;
+      color: rgba(230, 160, 178, 0.07);
+      font-size: 190px;
+      pointer-events: none;
+      transform: rotate(15deg);
     }
 
     .page {
-      width: min(100% - 36px, 680px);
+      width: min(100% - 32px, 780px);
       margin: 0 auto;
-      padding: 64px 0 32px;
+      padding: 56px 0 36px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero {
       text-align: center;
-      animation: appear 1s ease both;
+      margin-bottom: 34px;
+      animation: fadeUp 1s ease both;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
       color: var(--gold);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
+      font-size: 0.76rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-    }
-
-    .eyebrow::before,
-    .eyebrow::after {
-      content: "";
-      width: 22px;
-      height: 1px;
-      background: var(--gold);
-      opacity: 0.65;
+      margin-bottom: 12px;
     }
 
     h1 {
-      margin: 22px 0 12px;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(2.5rem, 8vw, 4.4rem);
+      font-family: "Playfair Display", serif;
       font-weight: 500;
-      line-height: 1.12;
-      letter-spacing: -0.035em;
-    }
-
-    h1 span {
-      display: block;
-      color: var(--accent);
-      font-style: italic;
+      font-size: clamp(2.3rem, 7vw, 4.2rem);
+      line-height: 1.15;
+      margin: 0 auto 16px;
+      color: var(--rose-light);
     }
 
     .subtitle {
-      max-width: 440px;
-      margin: 0 auto 34px;
+      max-width: 480px;
+      margin: 0 auto;
       color: var(--muted);
-      font-size: 0.98rem;
+      font-size: 1rem;
+    }
+
+    .photo-card {
+      max-width: 510px;
+      margin: 34px auto 48px;
+      padding: 12px;
+      border: 1px solid rgba(230, 160, 178, 0.3);
+      border-radius: 20px;
+      background: linear-gradient(145deg, #3b1b2a, #211018);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+      animation: fadeUp 1s 0.15s ease both;
     }
 
     .photo-frame {
-      position: relative;
-      width: min(100%, 440px);
-      margin: 0 auto;
-      padding: 8px;
-      border: 1px solid rgba(232, 197, 141, 0.5);
-      border-radius: 220px 220px 24px 24px;
-      background: linear-gradient(
-        145deg,
-        rgba(232, 197, 141, 0.16),
-        rgba(231, 168, 194, 0.04)
-      );
-      box-shadow:
-        0 0 70px rgba(231, 91, 151, 0.12),
-        0 25px 80px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      border-radius: 12px;
+      background: #301822;
     }
 
     .photo-frame img {
       display: block;
       width: 100%;
-      max-height: 580px;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 212px 212px 17px 17px;
-      background: var(--surface);
+      height: auto;
+      max-height: 640px;
+      object-fit: contain;
     }
 
     .photo-caption {
-      margin: 17px 0 0;
-      color: var(--gold);
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 1.05rem;
+      text-align: center;
+      padding: 15px 8px 5px;
+      color: var(--rose-light);
+      font-family: "Playfair Display", serif;
       font-style: italic;
+      font-size: 1.12rem;
     }
 
     .divider {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 13px;
-      margin: 48px 0 38px;
-      color: var(--accent);
+      gap: 14px;
+      margin: 42px 0;
+      color: var(--rose);
     }
 
     .divider::before,
     .divider::after {
       content: "";
-      width: 64px;
+      width: 65px;
       height: 1px;
-      background: var(--border);
+      background: linear-gradient(90deg, transparent, var(--rose));
+    }
+
+    .divider::after {
+      transform: rotate(180deg);
     }
 
     .letter {
-      padding: 30px clamp(20px, 5vw, 38px);
-      border: 1px solid var(--border);
+      padding: clamp(22px, 5vw, 42px);
+      border: 1px solid rgba(230, 160, 178, 0.19);
       border-radius: 20px;
-      background: linear-gradient(
-        145deg,
-        rgba(255, 255, 255, 0.035),
-        rgba(255, 255, 255, 0.012)
-      );
-      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.12);
-      animation: appear 1s 0.2s ease both;
+      background: linear-gradient(155deg, var(--card-light), var(--card));
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.16);
+      animation: fadeUp 1s 0.3s ease both;
     }
 
-    .letter h2 {
-      margin: 0 0 22px;
-      color: var(--accent);
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 1.9rem;
-      font-weight: 500;
+    .letter-heading {
+      text-align: center;
+      margin: 0 0 28px;
+      color: var(--rose-light);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
+      font-weight: 400;
       line-height: 1.3;
     }
 
     .letter p {
-      margin: 0 0 19px;
-      color: #e8dbe2;
-      font-size: 0.98rem;
+      margin: 0 0 20px;
+      color: #f0dfe4;
+      font-size: 1rem;
+      overflow-wrap: break-word;
     }
 
     .letter p:last-child {
       margin-bottom: 0;
     }
 
-    .highlight {
-      color: var(--gold);
-      font-weight: 600;
+    .letter .opening {
+      color: var(--rose-light);
+      font-family: "Playfair Display", serif;
+      font-size: 1.3rem;
     }
 
     .closing {
-      padding: 42px 8px 12px;
       text-align: center;
-      animation: appear 1s 0.4s ease both;
+      padding: 38px 12px 20px;
+      animation: fadeUp 1s 0.45s ease both;
     }
 
-    .closing-heart {
-      display: inline-block;
-      margin-bottom: 12px;
-      color: var(--accent);
-      font-size: 1.8rem;
-      animation: heartbeat 2.2s ease-in-out infinite;
-    }
-
-    .closing h2 {
+    .closing-message {
+      color: var(--rose-light);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.5rem, 4vw, 2.1rem);
+      line-height: 1.5;
       margin: 0 0 12px;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(1.8rem, 6vw, 2.5rem);
-      font-weight: 500;
-      line-height: 1.3;
     }
 
-    .closing p {
-      margin: 0;
+    .closing-subtitle {
       color: var(--muted);
+      margin: 0;
+      font-size: 0.92rem;
     }
 
-    .signature {
-      margin-top: 24px !important;
-      color: var(--accent) !important;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 1.25rem;
-      font-style: italic;
+    .heart {
+      display: inline-block;
+      color: #ed8fa9;
+      animation: heartbeat 1.6s ease-in-out infinite;
     }
 
     footer {
-      padding-top: 42px;
-      color: #947c8a;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
+      padding-top: 34px;
       text-align: center;
+      color: #9f7d89;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
     }
 
-    .sparkle {
-      position: fixed;
-      z-index: -1;
-      color: rgba(232, 197, 141, 0.55);
-      pointer-events: none;
-      animation: twinkle 4s ease-in-out infinite;
-    }
-
-    .sparkle.one {
-      top: 18%;
-      left: 7%;
-      font-size: 17px;
-    }
-
-    .sparkle.two {
-      top: 37%;
-      right: 7%;
-      font-size: 13px;
-      animation-delay: 1.5s;
-    }
-
-    .sparkle.three {
-      top: 72%;
-      left: 9%;
-      font-size: 12px;
-      animation-delay: 2.5s;
-    }
-
-    @keyframes appear {
+    @keyframes fadeUp {
       from {
         opacity: 0;
         transform: translateY(18px);
@@ -271,46 +240,54 @@
     }
 
     @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      12% { transform: scale(1.13); }
-      24% { transform: scale(1); }
-      36% { transform: scale(1.08); }
-      48% { transform: scale(1); }
+      0%, 100% {
+        transform: scale(1);
+      }
+      15% {
+        transform: scale(1.16);
+      }
+      30% {
+        transform: scale(1);
+      }
+      45% {
+        transform: scale(1.1);
+      }
     }
 
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.25; }
-      50% { opacity: 0.9; }
-    }
-
-    @media (max-width: 480px) {
+    @media (max-width: 520px) {
       .page {
-        width: min(100% - 28px, 680px);
-        padding-top: 46px;
+        width: min(100% - 22px, 780px);
+        padding-top: 38px;
       }
 
       .subtitle {
-        font-size: 0.92rem;
-      }
-
-      .photo-frame {
-        width: min(100%, 360px);
-      }
-
-      .letter {
-        padding: 25px 21px;
-      }
-
-      .letter p {
         font-size: 0.94rem;
       }
 
-      .sparkle.one { left: 3%; }
-      .sparkle.two { right: 3%; }
+      .photo-card {
+        margin-top: 28px;
+        margin-bottom: 36px;
+        padding: 8px;
+      }
+
+      .letter {
+        padding: 24px 20px;
+      }
+
+      .letter p {
+        font-size: 0.96rem;
+        line-height: 1.85;
+      }
+
+      .divider {
+        margin: 32px 0;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
@@ -320,110 +297,87 @@
 </head>
 
 <body>
-  <span class="sparkle one" aria-hidden="true">✧</span>
-  <span class="sparkle two" aria-hidden="true">✦</span>
-  <span class="sparkle three" aria-hidden="true">✧</span>
-
   <main class="page">
-    <header class="hero">
-      <div class="eyebrow">Hecho con amor, solo para ti</div>
 
-      <h1>
-        Para mi
-        <span>princesa más fuerte</span>
-      </h1>
+    <header class="hero">
+
+      <h1>Para mi princesa más fuerte</h1>
 
       <p class="subtitle">
         Un pequeño recordatorio para la chica que significa tanto para mí. ❤️
       </p>
-
-      <figure class="photo-frame">
-        <img
-          src="princess.jpg"
-          alt="Mi hermosa princesa mostrando sus músculos"
-          fetchpriority="high"
-        >
-      </figure>
-
-      <figcaption class="photo-caption">
-        Fuerte por fuera, preciosa por dentro.
-      </figcaption>
     </header>
 
-    <div class="divider" aria-hidden="true">♥</div>
+    <section class="photo-card" aria-label="Foto de mi princesa">
+      <div class="photo-frame">
+        <img
+          src="princess.jpg"
+          alt="Mi princesa preciosa mostrando lo fuerte que es"
+        >
+      </div>
 
-    <section class="letter">
-      <h2>Mi amor, quiero que recuerdes algo.</h2>
-
-      <p>
-        Sé que últimamente has estado esforzándote muchísimo.
-        Sé que quieres hacer las cosas bien, que tienes muchas
-        responsabilidades y que, a veces, eres demasiado dura contigo misma.
-      </p>
-
-      <p>
-        Pero ojalá pudieras verte por un momento a través de mis ojos.
-        Yo no veo a una chica que está fracasando. Veo a una chica que
-        está aprendiendo, creciendo, enfrentándose a cosas nuevas y
-        dando lo mejor de sí misma, incluso cuando está cansada.
-      </p>
-
-      <p>
-        <span class="highlight">Estoy muy orgulloso de ti.</span>
-        No solo por lo que consigues, sino también por el esfuerzo que
-        haces, por seguir adelante y por la persona que eres.
-      </p>
-
-      <p>
-        No tienes que hacerlo todo perfectamente. No tienes que tener
-        todas las respuestas. Cometer errores no significa que seas
-        incapaz, y tener un día difícil no significa que estés haciendo
-        las cosas mal.
-      </p>
-
-      <p>
-        Estás aprendiendo. Estás creciendo. Y no necesitas ser perfecta
-        para merecer sentirte orgullosa de ti misma.
-      </p>
-
-      <p>
-        Ojalá pudiera abrazarte ahora mismo, darte un beso en la frente
-        y ayudarte a dejar de pensar tanto, aunque fuera por unos minutos.
-        Quiero que sepas que no tienes que cargar con todo tú sola.
-      </p>
-
-      <p>
-        <span class="highlight">Creo en ti, mi niña.</span>
-        Creo en tu capacidad, en tu fuerza y en todo lo que todavía
-        estás descubriendo de ti misma. Incluso en los días en que
-        tú misma tengas dificultades para creerlo.
-      </p>
-
-      <p>
-        Y, por favor, no olvides cuidarte también. Tú mereces la misma
-        paciencia, la misma ternura y la misma comprensión que les das
-        a los demás.
-      </p>
+      <div class="photo-caption">
+        Fuerte por fuera, mi niña chiquitita por dentro.
+      </div>
     </section>
 
-    <section class="closing">
-      <div class="closing-heart" aria-hidden="true">♥</div>
+    <div class="divider" aria-hidden="true">♡</div>
 
-      <h2>Un día difícil no define quién eres.</h2>
+    <article class="letter">
+      <h2 class="letter-heading">Unas palabras para ti</h2>
+
+      <p class="opening">Mi niña preciosa,</p>
 
       <p>
-        Respira, descansa y sé un poquito más amable contigo misma.
-        No tienes que demostrarle nada a nadie esta noche.
+        Sé que la vida está complicada para ti últimamente. Sé que tú haces
+        todo lo posible para lograr tus metas, para mejorar tu vida y, aun
+        así, te parece que no avanzas, que todo te sale mal. Pero escúchame:
+        yo no veo a una chica que está fracasando, yo veo a la chica que
+        sigue avanzando, intentando y aprendiendo con sus cosas, a pesar de
+        todo, a pesar del dolor, del cansancio y de las dudas. Y dando lo
+        mejor de sí misma, incluso cuando está hecha polvo.
       </p>
 
-      <p class="signature">
-        Te quiero muchísimo, mi princesa. ❤️
+      <p>
+        Estoy orgulloso de ti. No solo por tus logros, sino también por el
+        esfuerzo que haces, por seguir adelante y por la persona que eres.
+        No tienes que hacerlo todo perfectamente. Cometer errores no
+        significa que seas incapaz, y tener un día difícil no significa
+        que estés haciendo las cosas mal. Estás aprendiendo. Estás creciendo.
+        Y no necesitas ser perfecta para merecer sentirte orgullosa de ti misma.
+      </p>
+
+      <p>
+        Me gustaría abrazarte tanto ahora, mimarte, darte besitos en la
+        frente y por todo el cuerpo. Susurrarte que eres mi buena niña y
+        ayudarte a superar todo eso, porque ya sabes, estoy contigo en palomalo y en palobueno.
+      </p>
+
+      <p>
+        Creo en ti, mi niña. Creo en tu camino, incluso en los días así.
+        Y tú también cree en ti misma. Porque lo mereces. Te amo inmensamente, mi bebe preciosa.
+      </p>
+    </article>
+
+    <div class="divider" aria-hidden="true">♡</div>
+
+    <section class="closing">
+      <p class="closing-message">
+        Siempre estoy contigo, mi niña.
+        <span class="heart">♥</span>
+      </p>
+
+      <p class="closing-subtitle">
+        Incluso en los días en los que te cuesta creer en ti misma.
       </p>
     </section>
 
     <footer>
-      HECHO CON AMOR · SOLO PARA TI
+      Hecho especialmente para ti, con todo mi amor. ❤️
     </footer>
+
   </main>
 </body>
 </html>
+
+
